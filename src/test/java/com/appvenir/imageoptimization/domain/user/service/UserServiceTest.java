@@ -3,6 +3,7 @@ package com.appvenir.imageoptimization.domain.user.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -14,26 +15,26 @@ import org.mockito.MockitoAnnotations;
 
 import com.appvenir.imageoptimization.domain.user.dto.UserDto;
 import com.appvenir.imageoptimization.domain.user.dto.UserRegistrationDto;
+import com.appvenir.imageoptimization.domain.user.factory.UserFactory;
 import com.appvenir.imageoptimization.domain.user.mapper.UserMapper;
 import com.appvenir.imageoptimization.domain.user.model.User;
 import com.appvenir.imageoptimization.domain.user.repository.UserRepository;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 
 public class UserServiceTest {
 
     @Mock
     private UserRepository mockUserRepository;
-
     private UserService userService;
-
     private UserMapper userMapper;
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.openMocks(this);  // Initialize the mocks and inject them into userService
-        userMapper = Mappers.getMapper(UserMapper.class);  // Use the real mapper implementation
-        userService = new UserService(mockUserRepository, userMapper);  // Manually inject the real mapper
+        MockitoAnnotations.openMocks(this);
+        userMapper = Mappers.getMapper(UserMapper.class);
+        userService = new UserService(mockUserRepository, userMapper);
     }
 
     @Test
@@ -53,12 +54,37 @@ public class UserServiceTest {
 
         when(mockUserRepository.save(any(User.class))).thenReturn(user);
 
-        UserDto result = userService.save(userRegistrationDto);
+        UserDto result = userService.saveUser(userRegistrationDto);
 
         assertNotNull(result);
         assertEquals("John", result.getFullName());
         assertEquals("jp@gmail.com", result.getEmail());
 
         verify(mockUserRepository).save(any(User.class));
+    }
+
+    @Test
+    public void update_should_update_existing_user(){
+
+        User currentUser = UserFactory.createDemoUser();
+        String originalEmail = currentUser.getEmail();
+        UserDto updateUser = userMapper.toUserDto(UserFactory.createDemoUser());
+        System.out.println(updateUser);
+
+        when(mockUserRepository.findByEmail(currentUser.getEmail())).thenReturn(Optional.of(currentUser));
+        when(mockUserRepository.save(any(User.class))).thenAnswer(invocation -> {
+            User savedUser = invocation.getArgument(0);
+            savedUser.setId(currentUser.getId());
+            return savedUser; 
+        });
+
+        UserDto result = userService.updateUser(currentUser.getEmail(), updateUser);
+
+        assertNotNull(result);
+        assertEquals(updateUser.getEmail(), result.getEmail());
+
+        verify(mockUserRepository).findByEmail(originalEmail);
+        verify(mockUserRepository).save(any(User.class));
+
     }
 }

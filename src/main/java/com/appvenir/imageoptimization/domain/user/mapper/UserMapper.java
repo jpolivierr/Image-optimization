@@ -1,14 +1,13 @@
 package com.appvenir.imageoptimization.domain.user.mapper;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component;
 
 import com.appvenir.imageoptimization.domain.user.dto.UserDto;
 import com.appvenir.imageoptimization.domain.user.dto.UserRegistrationDto;
 import com.appvenir.imageoptimization.domain.user.model.User;
 
-@Mapper
+@Mapper(componentModel = "spring")
 @Component
 public interface UserMapper {
     

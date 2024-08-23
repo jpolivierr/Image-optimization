@@ -21,11 +21,11 @@ public class ApplicationStartupListener {
     @EventListener(ContextRefreshedEvent.class)
     public void onApplicationEvent()
     {
-        try {
-            imageOptimizationConsumer.listen();
-        } catch (IOException | TimeoutException e) {
-            logger.error(e.getMessage(), e);
-        }
+        // try {
+        //     imageOptimizationConsumer.listen();
+        // } catch (IOException | TimeoutException e) {
+        //     logger.error(e.getMessage(), e);
+        // }
     }
 
     

@@ -58,6 +58,12 @@
 			<artifactId>mapstruct</artifactId>
 			<version>1.6.0</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+		<dependency>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>1.0.2</version>
+		</dependency>
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-mysql</artifactId>
@@ -111,6 +117,12 @@
                         <artifactId>mapstruct-processor</artifactId>
                         <version>1.6.0</version>
                     </path>
+					<path>				
+						<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>1.18.34</version>
+					</path>
                 </annotationProcessorPaths>
             </configuration>
         </plugin>
