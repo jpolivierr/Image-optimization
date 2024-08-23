@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.appvenir.imageoptimization.domain.imageOptimizer.model.ImageDetail;
+import com.appvenir.imageoptimization.domain.imageOptimizer.model.ImageDetails;
 import com.appvenir.imageoptimization.domain.imageOptimizer.service.ImageOptimizerService;
 
 @RestController
@@ -20,7 +20,7 @@ public class ImageOptimizerController {
     }
     
     @PostMapping
-    public ResponseEntity<?> postData(@RequestBody ImageDetail imageDetail) {
+    public ResponseEntity<?> postData(@RequestBody ImageDetails imageDetail) {
         // imageOptimizerService.run(imageDetail);
         return ResponseEntity.ok(imageDetail);
     }
