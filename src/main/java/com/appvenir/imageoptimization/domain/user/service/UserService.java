@@ -39,6 +39,10 @@ public class UserService {
         return userMapper.toUserDto(currentUser);
     }
 
+    public User findUserByEmail(String email){
+        return userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException());
+    }
+
     public void deleteUserByEmail(String email){
         User currentUser = userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException());
         userRepository.delete(currentUser);

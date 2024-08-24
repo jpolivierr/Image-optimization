@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.appvenir.imageoptimization.domain.imageOptimizer.model.ImageDetails;
+import com.appvenir.imageoptimization.domain.imageDetails.model.ImageDetails;
 import com.appvenir.imageoptimization.domain.imageOptimizer.service.ImageOptimizerService;
 
 @RestController

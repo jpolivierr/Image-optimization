@@ -2,7 +2,7 @@ package com.appvenir.imageoptimization.domain.imageOptimizer.service;
 
 import org.springframework.stereotype.Service;
 
-import com.appvenir.imageoptimization.domain.imageOptimizer.model.ImageDetails;
+import com.appvenir.imageoptimization.domain.imageDetails.model.ImageDetails;
 
 @Service
 public class ImageOptimizerService {
