@@ -38,9 +38,6 @@ public class ImageFiles {
     }
 
      public static String getFileName(Path fileName){
-
-        
-
         if (fileName == null || fileName.getFileName() == null) {
             throw new IllegalArgumentException("File name cannot be null");
         }

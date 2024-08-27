@@ -1,4 +1,4 @@
-package com.appvenir.imageoptimization.domain.Optimizer.service;
+package com.appvenir.imageoptimization.domain.Optimizer.service.processors;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,7 +7,6 @@ import com.appvenir.imageoptimization.domain.Optimizer.model.OptimizationContext
 import com.appvenir.imageoptimization.domain.Optimizer.model.OptimizationOrder;
 import com.appvenir.imageoptimization.domain.Optimizer.service.attributes.ScaleAttribute;
 import com.appvenir.imageoptimization.domain.Optimizer.service.factory.ImageOptimizerFactory;
-import com.appvenir.imageoptimization.domain.Optimizer.service.processors.ImageOptimizerProcessor;
 
 public class ImageOptimizerProcessorTest {
 
