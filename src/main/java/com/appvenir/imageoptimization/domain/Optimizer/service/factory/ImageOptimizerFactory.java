@@ -2,21 +2,18 @@ package com.appvenir.imageoptimization.domain.Optimizer.service.factory;
 
 import java.nio.file.Path;
 
-import com.appvenir.imageoptimization.domain.Optimizer.enums.OperationType;
 import com.appvenir.imageoptimization.domain.Optimizer.exception.NoOptimizationOperationSpecifyException;
 import com.appvenir.imageoptimization.domain.Optimizer.model.OptimizationContext;
-import com.appvenir.imageoptimization.domain.Optimizer.service.OptimizeOperationRegistry;
+import com.appvenir.imageoptimization.domain.Optimizer.service.operations.ScalingOperation;
 import com.appvenir.imageoptimization.domain.Optimizer.service.optimizer.ImageOptimizer;
 import com.appvenir.imageoptimization.domain.Optimizer.service.optimizer.Optimizer;
 
 public class ImageOptimizerFactory {
 
     private final OptimizationContext optimizationContext;
-    private final OptimizeOperationRegistry optimizeOperationRegistry;
 
-    public ImageOptimizerFactory(OptimizationContext optimizationContext, OptimizeOperationRegistry optimizeOperationRegistry){
+    public ImageOptimizerFactory(OptimizationContext optimizationContext){
         this.optimizationContext = optimizationContext;
-        this.optimizeOperationRegistry = optimizeOperationRegistry;
     }
 
     public Optimizer getOptimizer(Path filePath){
@@ -24,8 +21,7 @@ public class ImageOptimizerFactory {
         var imageOptimizer = new ImageOptimizer(filePath.toString());
 
         if(optimizationContext.getScale() != null){
-            var scalingOperation = optimizeOperationRegistry.getOperation(OperationType.SCALE, filePath.toString(), optimizationContext);
-            imageOptimizer.addOperation(scalingOperation);
+            imageOptimizer.addOperation(new ScalingOperation(filePath.toString(), optimizationContext.getOutputPath(), optimizationContext.getScale()));
             return imageOptimizer;
         }
 

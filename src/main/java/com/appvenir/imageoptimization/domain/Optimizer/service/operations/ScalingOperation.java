@@ -35,13 +35,10 @@ public class ScalingOperation implements OptimizeOperation{
     @Override
     public void execute() {
          try {
-            // Load the original image
             BufferedImage originalImage = ImageIO.read(new File(filePath));
 
-            // Resize the image to 200x200 pixels
             BufferedImage resizedImage = Scalr.resize(originalImage, scaleAttribute.getWidth().intValue());
 
-            // Save the resized image to a new file
             ImageIO.write(resizedImage, fileExt, new File(finalFilePath));
 
             System.out.println("Image resized successfully!");
