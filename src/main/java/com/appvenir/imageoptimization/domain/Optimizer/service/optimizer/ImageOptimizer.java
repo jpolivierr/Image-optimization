@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.appvenir.imageoptimization.domain.Optimizer.exception.NullFilePathException;
-import com.appvenir.imageoptimization.domain.Optimizer.service.operations.OptimizeOperation;
+import com.appvenir.imageoptimization.domain.Optimizer.service.operations.ImageOperation;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -16,7 +16,7 @@ import lombok.ToString;
 public class ImageOptimizer implements Optimizer {
     
     private final String filePath;
-    private final Set<OptimizeOperation> optimizeOperations;
+    private final Set<ImageOperation> optimizeOperations;
 
     public ImageOptimizer(String filePath){
         if(filePath == null) throw new NullFilePathException();
@@ -24,13 +24,13 @@ public class ImageOptimizer implements Optimizer {
         this.optimizeOperations = new HashSet<>();
     }
 
-    public void addOperation(OptimizeOperation optimizeOperation){
+    public void addOperation(ImageOperation optimizeOperation){
         this.optimizeOperations.add(optimizeOperation);
     }
 
     @Override
     public void run(){
-        for( OptimizeOperation optimizeOperation : optimizeOperations )
+        for( ImageOperation optimizeOperation : optimizeOperations )
         {
             optimizeOperation.execute();
         }

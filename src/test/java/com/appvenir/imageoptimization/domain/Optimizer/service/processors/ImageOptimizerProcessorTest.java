@@ -23,7 +23,7 @@ public class ImageOptimizerProcessorTest {
     @Test
     public void process_should_optimize_images_in_a_directory()
     {
-        ScaleAttribute scaleAttribute = new ScaleAttribute(200.0, null, null, null);
+        ScaleAttribute scaleAttribute = new ScaleAttribute(200, null, null, null);
         var optimizationOrder = new OptimizationOrder("testHost", targetPath, outputPath, scaleAttribute);
         var optimizationContext = new OptimizationContext(optimizationOrder);
         var optimizerFactory = new ImageOptimizerFactory(optimizationContext);

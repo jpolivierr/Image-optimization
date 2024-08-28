@@ -7,8 +7,8 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public class ScaleAttribute {
-    private final Double width;
-    private final Double height;
-    private final Double sizeIncrease;
-    private final Double sizeDecrease;
+    private final Integer width;
+    private final Integer height;
+    private final Integer sizeIncrease;
+    private final Integer sizeDecrease;
 }

@@ -18,7 +18,7 @@ import org.mockito.MockitoAnnotations;
 
 import com.appvenir.imageoptimization.domain.Optimizer.exception.NullFilePathException;
 import com.appvenir.imageoptimization.domain.Optimizer.service.attributes.ScaleAttribute;
-import com.appvenir.imageoptimization.domain.Optimizer.service.operations.OptimizeOperation;
+import com.appvenir.imageoptimization.domain.Optimizer.service.operations.ImageOperation;
 import com.appvenir.imageoptimization.domain.Optimizer.service.operations.ScalingOperation;
 
 public class ImageOptimizerTest {
@@ -35,7 +35,7 @@ public class ImageOptimizerTest {
     private ScaleAttribute scaleAttribute;
 
     @Mock
-    private OptimizeOperation mockOptimizeOperation;
+    private ImageOperation mockOptimizeOperation;
 
     @BeforeEach
     public void setup() throws IOException{
@@ -53,7 +53,7 @@ public class ImageOptimizerTest {
         int size = imageOptimizer.getOptimizeOperations().size();
 
         imageOptimizer.getOptimizeOperations()
-        .forEach( (ops) -> assertTrue(ops instanceof OptimizeOperation, "Should be a subclass of OptimizeOperation") );
+        .forEach( (ops) -> assertTrue(ops instanceof ImageOperation, "Should be a subclass of OptimizeOperation") );
 
         assertEquals(1, size, "The optimize operations list should contain 1 operation after adding an operation.");
     }

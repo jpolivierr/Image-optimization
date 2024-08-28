@@ -1,6 +1,6 @@
 package com.appvenir.imageoptimization.domain.Optimizer.service.operations;
 
-public interface OptimizeOperation {
+public interface ImageOperation {
     
     public void execute();
 
